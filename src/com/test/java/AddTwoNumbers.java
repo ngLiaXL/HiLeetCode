@@ -1,74 +1,9 @@
 package com.test.java;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
 
-public class MainTest {
-
-
-    public static void main(String[] args) {
-        lengthOfLongestSubstring("abcabcbb");
-
-
-       Thread t =  new Thread(){
-            @Override
-            public void run() {
-                run2();
-            }
-        };
-
-
-        Thread t2 =  new Thread(){
-            @Override
-            public void run() {
-                run2();
-            }
-        };
-
-    }
-
-
-    public static void run2(){
-
-    }
-
-    static void twoSum() {
-        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 9);
-        for (int anInt : ints) {
-            System.out.println(anInt);
-        }
-    }
-
-    /**
-     * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
-     * <p>
-     * 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-     * <p>
-     * 示例:
-     * <p>
-     * 给定 nums = [2, 7, 11, 15], target = 9
-     * <p>
-     * 因为 nums[0] + nums[1] = 2 + 7 = 9
-     * 所以返回 [0, 1]
-     */
-    public static int[] twoSum(int[] nums, int target) {
-
-        int[] result = new int[2];
-
-        for (int i = 0; i < nums.length; i++) {
-            int t = target - nums[i];
-            for (int j = i + 1; j < nums.length; j++) {
-                if (t == nums[j]) {
-                    result[0] = i;
-                    result[1] = j;
-                    return result;
-                }
-            }
-        }
-        return result;
-    }
+public class AddTwoNumbers {
 
     /**
      * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
@@ -148,30 +83,4 @@ public class MainTest {
         return result;
     }
 
-
-    /**
-     * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-     * abcabcbb
-     *
-     * @param s
-     * @return
-     */
-    public static int lengthOfLongestSubstring(String s) {
-        int maxLen = 0;
-        Set<Character> set = new HashSet<>();
-        for (int j = 0; j < s.length(); j++) {
-            set.add(s.charAt(j));
-            for (int i = j + 1; i < s.length(); i++) {
-                if (!set.add(s.charAt(i))) {
-                    break;
-                }
-            }
-            if (maxLen < set.size()) {
-                maxLen = set.size();
-            }
-            set.clear();
-        }
-        return maxLen;
-    }
 }
-
